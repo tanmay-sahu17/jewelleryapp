@@ -53,7 +53,7 @@ class ContactScreen extends StatelessWidget {
                         context,
                         phoneNumber: shop.whatsapp,
                         message:
-                            'Hi Shri Jewellers, I want to know more about your latest collection.',
+                            'Hi Gulab Jewellers, I want to know more about your latest collection.',
                       ),
                       icon: const Icon(Icons.chat_bubble_outline_rounded),
                       label: const Text('WhatsApp'),

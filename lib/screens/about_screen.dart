@@ -20,7 +20,7 @@ class AboutScreen extends StatelessWidget {
             ),
             const SizedBox(height: 10),
             Text(
-              'Shri Jewellers brings together timeless craftsmanship and modern taste in premium gold and silver jewellery. Every design is curated for elegance, purity, and family trust.',
+              'Gulab Jewellers brings together timeless craftsmanship and modern taste in premium gold and silver jewellery. Every design is curated for elegance, purity, and family trust.',
               style: Theme.of(context).textTheme.bodyLarge,
             ),
             const SizedBox(height: 18),

@@ -73,31 +73,31 @@ class _RateCardState extends State<RateCard>
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 Text(
-                  "Today's Shop Rate",
+                  "Today's Shop Rate (10g)",
                   style: textTheme.titleLarge?.copyWith(fontSize: 20),
                 ),
                 const SizedBox(height: 6),
                 Text(
-                  'Best value pricing for in-store purchase.',
+                  'Best value pricing for in-store purchase (10g basis).',
                   style: textTheme.bodySmall,
                 ),
                 const SizedBox(height: 16),
                 _rateRow(
                   icon: Icons.workspace_premium_rounded,
                   title: 'Gold 22K',
-                  value: widget.rates['Gold22K'] ?? 6825,
+                  value: widget.rates['Gold22K'] ?? 68250,
                 ),
                 const SizedBox(height: 10),
                 _rateRow(
                   icon: Icons.stars_rounded,
                   title: 'Gold 24K',
-                  value: widget.rates['Gold24K'] ?? 7440,
+                  value: widget.rates['Gold24K'] ?? 74400,
                 ),
                 const SizedBox(height: 10),
                 _rateRow(
                   icon: Icons.diamond_outlined,
                   title: 'Silver',
-                  value: widget.rates['Silver'] ?? 87,
+                  value: widget.rates['Silver'] ?? 870,
                 ),
               ],
             ),
@@ -128,7 +128,7 @@ class _RateCardState extends State<RateCard>
           child: Text(title, style: Theme.of(context).textTheme.titleMedium),
         ),
         Text(
-          formatRupee(value, suffix: '/g'),
+          formatRupee(value, suffix: '/10g'),
           style: Theme.of(context).textTheme.titleMedium?.copyWith(
             color: AppColors.softGold,
             fontWeight: FontWeight.w800,

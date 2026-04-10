@@ -128,7 +128,7 @@ class ProductDetailScreen extends StatelessWidget {
                           ),
                           const SizedBox(height: 6),
                           Text(
-                            '${formatRupee(rate, suffix: '/g')} × ${product.weightLabel}',
+                            '${formatRupee(rate, suffix: '/10g')} × ${product.weightLabel} ÷ 10',
                             style: Theme.of(context).textTheme.bodySmall,
                           ),
                           const SizedBox(height: 2),
@@ -189,29 +189,29 @@ class ProductDetailScreen extends StatelessWidget {
 
   double _currentRate(ShopProvider provider) {
     if (product.metalType == 'Silver') {
-      return provider.liveRates['Silver'] ?? 89;
+      return provider.liveRates['Silver'] ?? 890;
     }
 
     if (product.purity.contains('24')) {
-      return provider.liveRates['Gold24K'] ?? 7470;
+      return provider.liveRates['Gold24K'] ?? 74700;
     }
 
-    return provider.liveRates['Gold22K'] ?? 6850;
+    return provider.liveRates['Gold22K'] ?? 68500;
   }
 
   String _rateCaption() {
     if (product.metalType == 'Silver') {
-      return 'Based on today\'s Silver live rate';
+      return 'Based on today\'s Silver live rate (10g basis)';
     }
     if (product.purity.contains('24')) {
-      return 'Based on today\'s Gold 24K live rate';
+      return 'Based on today\'s Gold 24K live rate (10g basis)';
     }
-    return 'Based on today\'s Gold 22K live rate';
+    return 'Based on today\'s Gold 22K live rate (10g basis)';
   }
 
   Future<void> _shareProduct(double estimatePrice) {
     return Share.share(
-      'Check out ${product.name} from Shri Jewellers. '
+      'Check out ${product.name} from Gulab Jewellers. '
       'Weight: ${product.weightLabel}, Purity: ${product.purity}, '
       'Estimated price: ${formatRupee(estimatePrice)}.',
       subject: product.name,

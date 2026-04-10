@@ -41,10 +41,10 @@ class _LiveRateTickerState extends State<LiveRateTicker>
         );
 
     final String tickerText =
-        'Gold 22K: ${formatRupee(widget.rates['Gold22K'] ?? 6850, suffix: '/g')}   |   '
-        'Gold 24K: ${formatRupee(widget.rates['Gold24K'] ?? 7470, suffix: '/g')}   |   '
-        'Silver: ${formatRupee(widget.rates['Silver'] ?? 89, suffix: '/g')}   |   '
-        'Updated Live Rates';
+      'Gold 22K: ${formatRupee(widget.rates['Gold22K'] ?? 68500, suffix: '/10g')}   |   '
+      'Gold 24K: ${formatRupee(widget.rates['Gold24K'] ?? 74700, suffix: '/10g')}   |   '
+      'Silver: ${formatRupee(widget.rates['Silver'] ?? 890, suffix: '/10g')}   |   '
+      'Updated Live Rates (10g)';
 
     return Container(
       height: 44,

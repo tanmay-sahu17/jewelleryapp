@@ -55,7 +55,8 @@ class ShopProvider extends ChangeNotifier {
   }
 
   double estimatePrice(Product product) {
-    return _resolveRate(product) * product.weight;
+    // Rates are stored per 10g; convert to per-gram for weight-based estimates.
+    return (_resolveRate(product) / 10) * product.weight;
   }
 
   double _resolveRate(Product product) {
@@ -73,13 +74,13 @@ class ShopProvider extends ChangeNotifier {
   Future<void> refreshHomeData() async {
     await Future<void>.delayed(const Duration(milliseconds: 1200));
 
-    _liveRates['Gold22K'] = _jitter(_liveRates['Gold22K'] ?? 6850, 18);
-    _liveRates['Gold24K'] = _jitter(_liveRates['Gold24K'] ?? 7470, 22);
-    _liveRates['Silver'] = _jitter(_liveRates['Silver'] ?? 89, 2);
+    _liveRates['Gold22K'] = _jitter(_liveRates['Gold22K'] ?? 68500, 180);
+    _liveRates['Gold24K'] = _jitter(_liveRates['Gold24K'] ?? 74700, 220);
+    _liveRates['Silver'] = _jitter(_liveRates['Silver'] ?? 890, 20);
 
-    _shopRates['Gold22K'] = (_liveRates['Gold22K'] ?? 6850) - 20;
-    _shopRates['Gold24K'] = (_liveRates['Gold24K'] ?? 7470) - 25;
-    _shopRates['Silver'] = (_liveRates['Silver'] ?? 89) - 1;
+    _shopRates['Gold22K'] = (_liveRates['Gold22K'] ?? 68500) - 200;
+    _shopRates['Gold24K'] = (_liveRates['Gold24K'] ?? 74700) - 250;
+    _shopRates['Silver'] = (_liveRates['Silver'] ?? 890) - 10;
 
     notifyListeners();
   }
