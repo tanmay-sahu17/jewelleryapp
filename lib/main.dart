@@ -6,18 +6,18 @@ import 'screens/splash_screen.dart';
 import 'theme/app_theme.dart';
 
 void main() {
-  runApp(const ShriJewellersApp());
+  runApp(const GulabJewellersApp());
 }
 
-class ShriJewellersApp extends StatelessWidget {
-  const ShriJewellersApp({super.key});
+class GulabJewellersApp extends StatelessWidget {
+  const GulabJewellersApp({super.key});
 
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider<ShopProvider>(
       create: (_) => ShopProvider(),
       child: MaterialApp(
-        title: 'Shri Jewellers',
+        title: 'Gulab Jewellers',
         debugShowCheckedModeBanner: false,
         theme: AppTheme.darkTheme,
         home: const SplashScreen(),

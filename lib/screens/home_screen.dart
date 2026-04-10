@@ -29,7 +29,7 @@ class _HomeScreenState extends State<HomeScreen> {
   int _currentIndex = 0;
 
   static const List<String> _titles = <String>[
-    'Shri Jewellers',
+    'Gulab Jewellers',
     'Products',
     'Offers',
     'Contact Us',
@@ -121,6 +121,8 @@ class _HomeScreenState extends State<HomeScreen> {
 
   PreferredSizeWidget _buildAppBar(BuildContext context) {
     if (_currentIndex == 0) {
+      final String shopName = context.read<ShopProvider>().shopInfo.name;
+
       return AppBar(
         titleSpacing: 0,
         title: Row(
@@ -145,7 +147,7 @@ class _HomeScreenState extends State<HomeScreen> {
               mainAxisSize: MainAxisSize.min,
               children: <Widget>[
                 Text(
-                  'Shri Jewellers',
+                  shopName,
                   style: Theme.of(
                     context,
                   ).textTheme.titleLarge?.copyWith(fontSize: 22),
@@ -182,6 +184,8 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   Widget _buildDrawer(BuildContext context) {
+    final shopInfo = context.read<ShopProvider>().shopInfo;
+
     return Drawer(
       backgroundColor: AppColors.charcoal,
       child: SafeArea(
@@ -214,13 +218,15 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                   const SizedBox(height: 12),
                   Text(
-                    'Shri Jewellers',
+                    shopInfo.name,
                     style: Theme.of(context).textTheme.titleLarge,
                   ),
                   const SizedBox(height: 4),
                   Text(
-                    'Elegant by tradition, trusted by families.',
+                    shopInfo.address,
                     style: Theme.of(context).textTheme.bodySmall,
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
                   ),
                 ],
               ),

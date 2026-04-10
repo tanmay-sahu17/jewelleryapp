@@ -49,15 +49,15 @@ class DummyData {
   ];
 
   static const Map<String, double> liveRates = <String, double>{
-    'Gold22K': 6850,
-    'Gold24K': 7470,
-    'Silver': 89,
+    'Gold22K': 68500,
+    'Gold24K': 74700,
+    'Silver': 890,
   };
 
   static const Map<String, double> shopRates = <String, double>{
-    'Gold22K': 6825,
-    'Gold24K': 7440,
-    'Silver': 87,
+    'Gold22K': 68250,
+    'Gold24K': 74400,
+    'Silver': 870,
   };
 
   static final List<Product> products = <Product>[
@@ -226,12 +226,12 @@ class DummyData {
   ];
 
   static const ShopInfo shopInfo = ShopInfo(
-    name: 'Shri Jewellers',
+    name: 'Gulab Jewellers',
     address:
-        'Shop No. 12, Sarafa Bazar Road, Near Main Chowk, Raipur, Chhattisgarh - 492001',
-    primaryPhone: '+91 98765 43210',
-    secondaryPhone: '+91 98271 22110',
-    whatsapp: '+91 98765 43210',
+      'Sadar Bazar, Bhatapara, Dist - Bhatapara-Balodabazar, 493118',
+    primaryPhone: '+91 62659 20397',
+    secondaryPhone: '+91 62659 20397',
+    whatsapp: '+91 62659 20397',
     email: 'info@shrijewellers.in',
     businessHours: <String, String>{
       'Monday': '10:00 AM - 8:30 PM',
@@ -246,7 +246,7 @@ class DummyData {
 
   static const BankDetails bankDetails = BankDetails(
     bankName: 'HDFC Bank',
-    accountHolder: 'Shri Jewellers LLP',
+    accountHolder: 'Gulab Jewellers LLP',
     accountNumber: '50200012345678',
     ifscCode: 'HDFC0000456',
     upiId: 'shrijewellers@hdfcbank',

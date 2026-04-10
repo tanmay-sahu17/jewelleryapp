@@ -132,7 +132,7 @@ class _ProductsScreenState extends State<ProductsScreen> {
       context,
       phoneNumber: provider.shopInfo.whatsapp,
       message:
-          'Hello Shri Jewellers, I want details for ${product.name} (${product.weightLabel}, ${product.purity}).',
+          'Hello Gulab Jewellers, I want details for ${product.name} (${product.weightLabel}, ${product.purity}).',
     );
   }
 }

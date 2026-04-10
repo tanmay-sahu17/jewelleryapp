@@ -125,7 +125,7 @@ class _SplashScreenState extends State<SplashScreen>
                   ),
                 ),
                 const SizedBox(height: 24),
-                Text('Shri Jewellers', style: textTheme.displayLarge),
+                Text('Gulab Jewellers', style: textTheme.displayLarge),
                 const SizedBox(height: 8),
                 Text(
                   'Timeless Gold & Silver Elegance',
