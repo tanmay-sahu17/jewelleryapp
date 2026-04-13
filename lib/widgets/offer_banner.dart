@@ -48,8 +48,8 @@ class _OfferBannerState extends State<OfferBanner> {
                 borderRadius: BorderRadius.circular(16),
                 boxShadow: <BoxShadow>[
                   BoxShadow(
-                    color: Colors.black.withValues(alpha: 0.35),
-                    blurRadius: 18,
+                    color: AppColors.black.withValues(alpha: 0.14),
+                    blurRadius: 16,
                     offset: const Offset(0, 8),
                   ),
                 ],
@@ -62,6 +62,8 @@ class _OfferBannerState extends State<OfferBanner> {
                     CachedNetworkImage(
                       imageUrl: offer.imageUrl,
                       fit: BoxFit.cover,
+                      memCacheWidth: 1000,
+                      maxWidthDiskCache: 1400,
                       placeholder: (BuildContext context, String _) =>
                           Container(color: gradient.first),
                       errorWidget:
@@ -74,8 +76,8 @@ class _OfferBannerState extends State<OfferBanner> {
                           begin: Alignment.bottomCenter,
                           end: Alignment.topCenter,
                           colors: <Color>[
-                            Colors.black.withValues(alpha: 0.75),
-                            gradient.last.withValues(alpha: 0.25),
+                            AppColors.maroon.withValues(alpha: 0.72),
+                            gradient.last.withValues(alpha: 0.3),
                             Colors.transparent,
                           ],
                           stops: const <double>[0.0, 0.65, 1.0],
@@ -94,7 +96,7 @@ class _OfferBannerState extends State<OfferBanner> {
                             overflow: TextOverflow.ellipsis,
                             style: Theme.of(context).textTheme.titleLarge
                                 ?.copyWith(
-                                  color: AppColors.cream,
+                                  color: Colors.white,
                                   fontSize: 20,
                                 ),
                           ),
@@ -103,14 +105,15 @@ class _OfferBannerState extends State<OfferBanner> {
                             offer.description,
                             maxLines: 2,
                             overflow: TextOverflow.ellipsis,
-                            style: Theme.of(context).textTheme.bodyMedium,
+                            style: Theme.of(context).textTheme.bodyMedium
+                                ?.copyWith(color: Colors.white),
                           ),
                           const SizedBox(height: 8),
                           Text(
                             offer.validUntil,
                             style: Theme.of(context).textTheme.bodySmall
                                 ?.copyWith(
-                                  color: AppColors.softGold,
+                                  color: const Color(0xFFFFE5AD),
                                   fontWeight: FontWeight.w700,
                                 ),
                           ),
@@ -148,7 +151,7 @@ class _OfferBannerState extends State<OfferBanner> {
                 borderRadius: BorderRadius.circular(10),
                 color: _activeIndex == index
                     ? AppColors.gold
-                    : AppColors.cream.withValues(alpha: 0.3),
+                    : AppColors.softGold.withValues(alpha: 0.24),
               ),
             ),
           ),

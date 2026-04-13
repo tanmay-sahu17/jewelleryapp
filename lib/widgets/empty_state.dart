@@ -32,9 +32,10 @@ class EmptyState extends StatelessWidget {
                 gradient: RadialGradient(
                   colors: <Color>[
                     AppColors.gold.withValues(alpha: 0.28),
-                    AppColors.charcoal,
+                    AppColors.silver.withValues(alpha: 0.3),
                   ],
                 ),
+                border: Border.all(color: AppColors.gold.withValues(alpha: 0.24)),
               ),
               child: Icon(icon, color: AppColors.softGold, size: 42),
             ),

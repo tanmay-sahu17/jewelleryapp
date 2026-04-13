@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shri_jewellers/l10n/app_localizations.dart';
 
 import '../theme/app_theme.dart';
 import '../utils/formatters.dart';
@@ -33,6 +34,7 @@ class _LiveRateTickerState extends State<LiveRateTicker>
 
   @override
   Widget build(BuildContext context) {
+    final AppLocalizations l10n = AppLocalizations.of(context)!;
     final TextStyle textStyle = Theme.of(context).textTheme.titleMedium!
         .copyWith(
           color: AppColors.cream,
@@ -40,18 +42,25 @@ class _LiveRateTickerState extends State<LiveRateTicker>
           letterSpacing: 0.35,
         );
 
-    final String tickerText =
-      'Gold 22K: ${formatRupee(widget.rates['Gold22K'] ?? 68500, suffix: '/10g')}   |   '
-      'Gold 24K: ${formatRupee(widget.rates['Gold24K'] ?? 74700, suffix: '/10g')}   |   '
-      'Silver: ${formatRupee(widget.rates['Silver'] ?? 890, suffix: '/10g')}   |   '
-      'Updated Live Rates (10g)';
+    final String tickerText = l10n.liveRateTickerText(
+      formatRupee(widget.rates['Gold22K'] ?? 68500, suffix: '/10g'),
+      formatRupee(widget.rates['Gold24K'] ?? 74700, suffix: '/10g'),
+      formatRupee(widget.rates['Silver'] ?? 890, suffix: '/10g'),
+    );
 
     return Container(
-      height: 44,
+      height: 46,
       decoration: BoxDecoration(
-        color: AppColors.charcoal.withValues(alpha: 0.86),
+        color: AppColors.charcoal.withValues(alpha: 0.95),
         borderRadius: BorderRadius.circular(12),
-        border: Border.all(color: AppColors.gold.withValues(alpha: 0.22)),
+        border: Border.all(color: AppColors.gold.withValues(alpha: 0.3)),
+        boxShadow: <BoxShadow>[
+          BoxShadow(
+            color: AppColors.black.withValues(alpha: 0.07),
+            blurRadius: 10,
+            offset: const Offset(0, 4),
+          ),
+        ],
       ),
       clipBehavior: Clip.antiAlias,
       child: LayoutBuilder(
@@ -75,7 +84,6 @@ class _LiveRateTickerState extends State<LiveRateTicker>
                     left: baseLeft,
                     top: 11,
                     child: _ShimmerTickerText(
-                      controller: _controller,
                       text: tickerText,
                       style: textStyle,
                     ),
@@ -84,7 +92,6 @@ class _LiveRateTickerState extends State<LiveRateTicker>
                     left: baseLeft - travelDistance,
                     top: 11,
                     child: _ShimmerTickerText(
-                      controller: _controller,
                       text: tickerText,
                       style: textStyle,
                     ),
@@ -111,44 +118,18 @@ class _LiveRateTickerState extends State<LiveRateTicker>
 
 class _ShimmerTickerText extends StatelessWidget {
   const _ShimmerTickerText({
-    required this.controller,
     required this.text,
     required this.style,
   });
 
-  final AnimationController controller;
   final String text;
   final TextStyle style;
 
   @override
   Widget build(BuildContext context) {
-    return ShaderMask(
-      blendMode: BlendMode.srcIn,
-      shaderCallback: (Rect bounds) {
-        final double slide = (bounds.width * 2) * controller.value;
-        return LinearGradient(
-          colors: const <Color>[
-            AppColors.gold,
-            AppColors.softGold,
-            Colors.white,
-            AppColors.gold,
-          ],
-          stops: const <double>[0.0, 0.35, 0.52, 1.0],
-          transform: _SlidingGradientTransform(slide),
-        ).createShader(bounds);
-      },
-      child: Text(text, style: style),
+    return Text(
+      text,
+      style: style.copyWith(color: AppColors.cream),
     );
-  }
-}
-
-class _SlidingGradientTransform extends GradientTransform {
-  const _SlidingGradientTransform(this.slidePercent);
-
-  final double slidePercent;
-
-  @override
-  Matrix4 transform(Rect bounds, {TextDirection? textDirection}) {
-    return Matrix4.translationValues(slidePercent - bounds.width, 0, 0);
   }
 }

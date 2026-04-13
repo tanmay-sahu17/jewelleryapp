@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shri_jewellers/l10n/app_localizations.dart';
 
 import '../theme/app_theme.dart';
 import '../widgets/premium_background.dart';
@@ -8,41 +9,47 @@ class AboutScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final AppLocalizations l10n = AppLocalizations.of(context)!;
     return Scaffold(
-      appBar: AppBar(title: const Text('About Shop')),
+      appBar: AppBar(title: Text(l10n.aboutTitle)),
       body: PremiumBackground(
         child: ListView(
           padding: const EdgeInsets.only(top: 12, bottom: 24),
           children: <Widget>[
-            Text(
-              'A Heritage of Trust',
-              style: Theme.of(context).textTheme.headlineMedium,
+            Container(
+              padding: const EdgeInsets.all(16),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(16),
+                color: AppColors.charcoal,
+                border: Border.all(color: AppColors.border),
+              ),
+              child: Text(
+                l10n.heritageOfTrust,
+                style: Theme.of(context).textTheme.headlineMedium,
+              ),
             ),
             const SizedBox(height: 10),
             Text(
-              'Gulab Jewellers brings together timeless craftsmanship and modern taste in premium gold and silver jewellery. Every design is curated for elegance, purity, and family trust.',
+              l10n.aboutDescription,
               style: Theme.of(context).textTheme.bodyLarge,
             ),
             const SizedBox(height: 18),
             _PointCard(
               icon: Icons.verified_outlined,
-              title: 'Certified Purity',
-              subtitle:
-                  'We prioritize hallmarked jewellery and transparent pricing every day.',
+              title: l10n.certifiedPurity,
+              subtitle: l10n.certifiedPuritySubtitle,
             ),
             const SizedBox(height: 10),
             _PointCard(
               icon: Icons.auto_awesome_outlined,
-              title: 'Exclusive Designs',
-              subtitle:
-                  'From bridal sets to daily wear, every collection is selected with finesse.',
+              title: l10n.exclusiveDesigns,
+              subtitle: l10n.exclusiveDesignsSubtitle,
             ),
             const SizedBox(height: 10),
             _PointCard(
               icon: Icons.groups_2_outlined,
-              title: 'Family-Centric Service',
-              subtitle:
-                  'Warm guidance, honest recommendations, and personalized assistance.',
+              title: l10n.familyCentricService,
+              subtitle: l10n.familyCentricServiceSubtitle,
             ),
           ],
         ),
@@ -69,7 +76,7 @@ class _PointCard extends StatelessWidget {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(16),
         color: AppColors.charcoal,
-        border: Border.all(color: AppColors.gold.withValues(alpha: 0.22)),
+        border: Border.all(color: AppColors.border),
       ),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,

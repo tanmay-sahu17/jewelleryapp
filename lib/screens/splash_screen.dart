@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:shri_jewellers/l10n/app_localizations.dart';
 
 import '../theme/app_theme.dart';
 import 'home_screen.dart';
@@ -80,10 +81,13 @@ class _SplashScreenState extends State<SplashScreen>
   @override
   Widget build(BuildContext context) {
     final TextTheme textTheme = Theme.of(context).textTheme;
+    final AppLocalizations l10n = AppLocalizations.of(context)!;
 
     return Scaffold(
-      body: Container(
-        decoration: const BoxDecoration(gradient: AppColors.appBackground),
+      body: AnimatedContainer(
+        duration: const Duration(milliseconds: 320),
+        curve: Curves.easeInOutCubic,
+        decoration: BoxDecoration(gradient: AppColors.appBackground),
         child: Center(
           child: FadeTransition(
             opacity: _fadeAnimation,
@@ -99,7 +103,7 @@ class _SplashScreenState extends State<SplashScreen>
                         return LinearGradient(
                           begin: Alignment(-1 + (_controller.value * 2), 0),
                           end: Alignment(1 + (_controller.value * 2), 0),
-                          colors: const <Color>[
+                          colors: <Color>[
                             AppColors.gold,
                             AppColors.softGold,
                             Colors.white,
@@ -116,8 +120,16 @@ class _SplashScreenState extends State<SplashScreen>
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
                       border: Border.all(color: AppColors.gold, width: 1.5),
+                      color: Colors.white.withValues(alpha: 0.6),
+                      boxShadow: <BoxShadow>[
+                        BoxShadow(
+                          color: AppColors.gold.withValues(alpha: 0.18),
+                          blurRadius: 18,
+                          offset: const Offset(0, 8),
+                        ),
+                      ],
                     ),
-                    child: const Icon(
+                    child: Icon(
                       Icons.diamond,
                       size: 54,
                       color: AppColors.gold,
@@ -125,12 +137,12 @@ class _SplashScreenState extends State<SplashScreen>
                   ),
                 ),
                 const SizedBox(height: 24),
-                Text('Gulab Jewellers', style: textTheme.displayLarge),
+                Text(l10n.appTitle, style: textTheme.displayLarge),
                 const SizedBox(height: 8),
                 Text(
-                  'Timeless Gold & Silver Elegance',
+                  l10n.splashTagline,
                   style: textTheme.bodyLarge?.copyWith(
-                    color: AppColors.cream.withValues(alpha: 0.8),
+                    color: AppColors.mutedText,
                     letterSpacing: 0.6,
                   ),
                 ),

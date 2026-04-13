@@ -1,0 +1,275 @@
+{
+  "@@locale": "hi",
+  "appTitle": "गुलाब ज्वेलर्स",
+  "homeTab": "होम",
+  "productsTab": "प्रोडक्ट्स",
+  "offersTab": "ऑफर्स",
+  "contactTab": "संपर्क",
+  "contactUs": "संपर्क करें",
+  "premiumGoldSilver": "प्रीमियम गोल्ड और सिल्वर",
+  "notifications": "सूचनाएं",
+  "closeSearch": "खोज बंद करें",
+  "searchProducts": "प्रोडक्ट खोजें",
+  "darkModeEnabled": "डार्क मोड चालू हुआ",
+  "lightModeEnabled": "लाइट मोड चालू हुआ",
+  "darkMode": "डार्क मोड",
+  "enabled": "चालू",
+  "disabled": "बंद",
+  "themeAppliesInstantly": "थीम तुरंत सभी स्क्रीन पर लागू होती है।",
+  "callShowroom": "शोरूम कॉल करें",
+  "bankDetails": "बैंक विवरण",
+  "aboutShop": "दुकान के बारे में",
+  "language": "भाषा",
+  "english": "English",
+  "hindi": "हिंदी",
+  "languageChangedToEnglish": "भाषा English में बदल दी गई",
+  "languageChangedToHindi": "भाषा हिंदी में बदल दी गई",
+  "limitedTimeOffers": "सीमित समय के ऑफर्स",
+  "freshFestiveDeals": "नए फेस्टिव डील्स रोज अपडेट होते हैं",
+  "featuredCollection": "फीचर्ड कलेक्शन",
+  "handpickedPremiumDesigns": "आपके लिए चुने हुए प्रीमियम डिज़ाइन्स",
+  "noFeaturedProductsYet": "अभी कोई फीचर्ड प्रोडक्ट नहीं है",
+  "newLuxuryPiecesSoon": "नए लग्ज़री पीस जल्द जोड़े जाएंगे।",
+  "homeWhatsAppMessage": "नमस्ते, मुझे {name} ({weight}, {purity}) के बारे में जानकारी चाहिए।",
+  "@homeWhatsAppMessage": {
+    "placeholders": {
+      "name": {},
+      "weight": {},
+      "purity": {}
+    }
+  },
+  "shopOpenNow": "दुकान अभी खुली है",
+  "shopClosedNow": "दुकान अभी बंद है",
+  "todayLabel": "आज",
+  "shopClosedToday": "आज दुकान बंद है",
+  "checkBusinessHours": "व्यवसाय समय देखें",
+  "closesAt": "{time} पर बंद होगी",
+  "@closesAt": {
+    "placeholders": {
+      "time": {}
+    }
+  },
+  "opensAt": "{time} पर खुलेगी",
+  "@opensAt": {
+    "placeholders": {
+      "time": {}
+    }
+  },
+  "opensTomorrowAt": "कल {time} पर खुलेगी",
+  "@opensTomorrowAt": {
+    "placeholders": {
+      "time": {}
+    }
+  },
+  "closed": "बंद",
+  "productInquiryInStock": "नमस्ते गुलाब ज्वेलर्स, मुझे {name} ({weight}, {purity}) की जानकारी चाहिए।",
+  "@productInquiryInStock": {
+    "placeholders": {
+      "name": {},
+      "weight": {},
+      "purity": {}
+    }
+  },
+  "productInquiryNotify": "नमस्ते गुलाब ज्वेलर्स, {name} ({weight}, {purity}) उपलब्ध होने पर कृपया मुझे सूचित करें।",
+  "@productInquiryNotify": {
+    "placeholders": {
+      "name": {},
+      "weight": {},
+      "purity": {}
+    }
+  },
+  "visitOurShowroom": "हमारे शोरूम पर आएं",
+  "primary": "प्राथमिक",
+  "secondary": "द्वितीयक",
+  "whatsapp": "व्हाट्सऐप",
+  "email": "ईमेल",
+  "businessHours": "व्यवसाय समय",
+  "findUsOnMap": "मैप पर देखें",
+  "googleMapPlaceholder": "Google Map प्रीव्यू प्लेसहोल्डर",
+  "paymentDetails": "पेमेंट विवरण",
+  "contactWhatsAppMessage": "नमस्ते गुलाब ज्वेलर्स, मुझे आपके नए कलेक्शन के बारे में जानना है।",
+  "aboutTitle": "दुकान के बारे में",
+  "heritageOfTrust": "विश्वास की विरासत",
+  "aboutDescription": "गुलाब ज्वेलर्स पारंपरिक कारीगरी और आधुनिक पसंद का सुंदर मेल है। हर डिज़ाइन शुद्धता, आकर्षण और पारिवारिक भरोसे को ध्यान में रखकर चुना जाता है।",
+  "certifiedPurity": "प्रमाणित शुद्धता",
+  "certifiedPuritySubtitle": "हम हमेशा हॉलमार्क ज्वेलरी और पारदर्शी मूल्य को प्राथमिकता देते हैं।",
+  "exclusiveDesigns": "विशेष डिज़ाइन्स",
+  "exclusiveDesignsSubtitle": "ब्राइडल सेट से लेकर डेली वियर तक, हर कलेक्शन चुनिंदा है।",
+  "familyCentricService": "परिवार-केंद्रित सेवा",
+  "familyCentricServiceSubtitle": "स्नेहपूर्ण मार्गदर्शन, ईमानदार सलाह और व्यक्तिगत सहायता।",
+  "advanceBookingOnly": "केवल एडवांस बुकिंग या टोकन राशि के लिए",
+  "bankName": "बैंक नाम",
+  "accountHolderName": "खाताधारक का नाम",
+  "accountNumber": "खाता संख्या",
+  "ifscCode": "IFSC कोड",
+  "upiId": "UPI आईडी",
+  "qrCode": "QR कोड",
+  "qrPlaceholder": "QR प्लेसहोल्डर",
+  "copiedToClipboard": "{label} क्लिपबोर्ड पर कॉपी हो गया।",
+  "@copiedToClipboard": {
+    "placeholders": {
+      "label": {}
+    }
+  },
+  "offersEmptyTitle": "अभी कोई सक्रिय ऑफर नहीं है",
+  "offersEmptySubtitle": "आने वाले डिस्काउंट के लिए जल्द दोबारा देखें।",
+  "knowMore": "और जानें",
+  "close": "बंद करें",
+  "notificationsMarkedRead": "{count} सूचनाएं पढ़ी हुई मार्क कर दी गईं।",
+  "@notificationsMarkedRead": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "markAll": "सभी पढ़ें",
+  "notificationsEmptyTitle": "अभी कोई सूचना नहीं है",
+  "notificationsEmptySubtitle": "अपडेट और ऑफर अलर्ट यहां दिखाई देंगे।",
+  "justNow": "अभी",
+  "minutesAgo": "{minutes} मिनट पहले",
+  "@minutesAgo": {
+    "placeholders": {
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
+  "hoursAgo": "{hours} घंटे पहले",
+  "@hoursAgo": {
+    "placeholders": {
+      "hours": {
+        "type": "int"
+      }
+    }
+  },
+  "yesterday": "कल",
+  "daysAgo": "{days} दिन पहले",
+  "@daysAgo": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  },
+  "designDescription": "डिज़ाइन विवरण",
+  "estimatedPrice": "अनुमानित कीमत",
+  "priceEstimateDisclaimer": "कृपया ध्यान दें: यह राशि मौजूदा मेटल रेट पर आधारित अनुमान है। अंतिम इन-स्टोर बिलिंग में मेकिंग चार्ज और GST लागू होने पर अंतर हो सकता है।",
+  "callUs": "कॉल करें",
+  "whatsappEnquiry": "व्हाट्सऐप पूछताछ",
+  "shareProduct": "प्रोडक्ट शेयर करें",
+  "share": "शेयर",
+  "productDetailsWhatsAppMessage": "नमस्ते, मुझे {name} ({weight}) की जानकारी चाहिए।",
+  "@productDetailsWhatsAppMessage": {
+    "placeholders": {
+      "name": {},
+      "weight": {}
+    }
+  },
+  "rateCaptionSilver": "आज के सिल्वर लाइव रेट (10 ग्राम आधार) पर आधारित",
+  "rateCaptionGold24": "आज के गोल्ड 24K लाइव रेट (10 ग्राम आधार) पर आधारित",
+  "rateCaptionGold22": "आज के गोल्ड 22K लाइव रेट (10 ग्राम आधार) पर आधारित",
+  "shareProductText": "गुलाब ज्वेलर्स का {name} देखें। वजन: {weight}, शुद्धता: {purity}, अनुमानित कीमत: {price}।",
+  "@shareProductText": {
+    "placeholders": {
+      "name": {},
+      "weight": {},
+      "purity": {},
+      "price": {}
+    }
+  },
+  "inStock": "स्टॉक में",
+  "soldOut": "स्टॉक खत्म",
+  "enquireNow": "अभी पूछताछ करें",
+  "notifyMe": "मुझे सूचित करें",
+  "liveRateTickerText": "गोल्ड 22K: {gold22}   |   गोल्ड 24K: {gold24}   |   सिल्वर: {silver}   |   अपडेटेड लाइव रेट (10 ग्राम)",
+  "@liveRateTickerText": {
+    "placeholders": {
+      "gold22": {},
+      "gold24": {},
+      "silver": {}
+    }
+  },
+  "todaysShopRate": "आज का दुकान रेट (10 ग्राम)",
+  "bestValuePricing": "इन-स्टोर खरीद के लिए सर्वश्रेष्ठ मूल्य (10 ग्राम आधार)।",
+  "lastUpdatedUnknown": "अंतिम अपडेट: --",
+  "lastUpdatedAt": "अंतिम अपडेट: {time}",
+  "@lastUpdatedAt": {
+    "placeholders": {
+      "time": {}
+    }
+  },
+  "gold22k": "गोल्ड 22K",
+  "gold24k": "गोल्ड 24K",
+  "silver": "सिल्वर",
+  "filters": "फिल्टर्स",
+  "filtersWithCount": "फिल्टर्स ({count})",
+  "@filtersWithCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "closeFilters": "फिल्टर्स बंद करें",
+  "applyFiltersSortPref": "फिल्टर और सॉर्टिंग प्राथमिकताएं लागू करें।",
+  "category": "कैटेगरी",
+  "categoryAll": "सभी",
+  "categoryGold": "गोल्ड",
+  "categorySilver": "सिल्वर",
+  "categoryRings": "रिंग्स",
+  "categoryNecklaces": "नेकलेस",
+  "categoryBangles": "चूड़ियां",
+  "categoryEarrings": "इयररिंग्स",
+  "metalType": "मेटल प्रकार",
+  "purity": "शुद्धता",
+  "inStockOnly": "सिर्फ स्टॉक में",
+  "hideSoldOutProducts": "स्टॉक खत्म प्रोडक्ट छिपाएं",
+  "estimatedPriceRange": "अनुमानित कीमत रेंज",
+  "weightRange": "वजन रेंज",
+  "reset": "रीसेट",
+  "apply": "लागू करें",
+  "sortBy": "सॉर्ट करें",
+  "closeSortOptions": "सॉर्ट विकल्प बंद करें",
+  "chooseSortArrangement": "प्रोडक्ट्स कैसे व्यवस्थित हों, चुनें।",
+  "sortLatest": "नवीनतम",
+  "sortPriceLowToHigh": "कीमत: कम से ज्यादा",
+  "sortPriceHighToLow": "कीमत: ज्यादा से कम",
+  "sortPopular": "लोकप्रिय",
+  "discoverCollection": "हमारा कलेक्शन देखें",
+  "browseHandcraftedDesigns": "हाथ से बनी गोल्ड और सिल्वर ज्वेलरी डिज़ाइन्स देखें।",
+  "searchHint": "प्रोडक्ट, कैटेगरी, मेटल, शुद्धता खोजें...",
+  "clearSearch": "खोज साफ करें",
+  "searchPrefix": "खोज",
+  "categoryPrefix": "कैटेगरी",
+  "pricePrefix": "कीमत",
+  "weightPrefix": "वजन",
+  "clearAll": "सब साफ करें",
+  "productsFound": "{count} प्रोडक्ट मिले",
+  "@productsFound": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "noItemsForFilters": "इन फिल्टर्स के लिए कोई आइटम नहीं मिला",
+  "noMatchingProducts": "कोई मिलते-जुलते प्रोडक्ट नहीं मिले",
+  "tryLooseningFilters": "फिल्टर कम करें, कैटेगरी बदलें, या कीमत और वजन रेंज समायोजित करें।",
+  "tryDifferentCategory": "और डिज़ाइन्स देखने के लिए दूसरी कैटेगरी चुनें।",
+  "showAllCategories": "सभी कैटेगरी दिखाएं",
+  "includeSoldOut": "स्टॉक खत्म भी दिखाएं",
+  "clearMetalPurity": "मेटल और शुद्धता साफ करें",
+  "resetRanges": "रेंज रीसेट करें",
+  "resetAllCriteria": "सभी मानदंड रीसेट करें",
+  "loadingMoreProducts": "और प्रोडक्ट लोड हो रहे हैं...",
+  "loadMoreProducts": "और प्रोडक्ट लोड करें",
+  "splashTagline": "टाइमलेस गोल्ड और सिल्वर एलिगेंस",
+  "weekdayMonday": "सोमवार",
+  "weekdayTuesday": "मंगलवार",
+  "weekdayWednesday": "बुधवार",
+  "weekdayThursday": "गुरुवार",
+  "weekdayFriday": "शुक्रवार",
+  "weekdaySaturday": "शनिवार",
+  "weekdaySunday": "रविवार"
+}

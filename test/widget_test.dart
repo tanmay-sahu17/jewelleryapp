@@ -13,7 +13,7 @@ void main() {
   testWidgets('Splash branding renders', (WidgetTester tester) async {
     await tester.pumpWidget(const ShriJewellersApp());
 
-    expect(find.text('Shri Jewellers'), findsOneWidget);
+    expect(find.text('Gulab Jewellers'), findsOneWidget);
     expect(find.text('Timeless Gold & Silver Elegance'), findsOneWidget);
   });
 }

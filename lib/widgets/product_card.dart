@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:shri_jewellers/l10n/app_localizations.dart';
 
 import '../models/product_model.dart';
 import '../theme/app_theme.dart';
@@ -19,6 +20,11 @@ class ProductCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final AppLocalizations l10n = AppLocalizations.of(context)!;
+    final String languageCode = Localizations.localeOf(context).languageCode;
+    final String localizedName = product.localizedNameForLanguage(languageCode);
+    final String localizedDescription =
+        product.localizedDescriptionForLanguage(languageCode);
     return Card(
       child: InkWell(
         onTap: onTap,
@@ -39,10 +45,12 @@ class ProductCard extends StatelessWidget {
                       child: CachedNetworkImage(
                         imageUrl: product.imageUrl,
                         fit: BoxFit.cover,
+                        memCacheWidth: 520,
+                        maxWidthDiskCache: 900,
                         placeholder: (BuildContext context, String _) =>
                             Container(
-                              color: AppColors.charcoal,
-                              child: const Center(
+                              color: AppColors.silver.withValues(alpha: 0.25),
+                              child: Center(
                                 child: CircularProgressIndicator(
                                   strokeWidth: 2,
                                   color: AppColors.gold,
@@ -52,13 +60,41 @@ class ProductCard extends StatelessWidget {
                         errorWidget:
                             (BuildContext context, String _, Object __) =>
                                 Container(
-                                  color: AppColors.charcoal,
-                                  child: const Icon(
+                                  color: AppColors.silver.withValues(alpha: 0.2),
+                                  child: Icon(
                                     Icons.image_not_supported_outlined,
                                     color: AppColors.softGold,
                                     size: 32,
                                   ),
                                 ),
+                      ),
+                    ),
+                  ),
+                  Positioned(
+                    top: 10,
+                    left: 10,
+                    child: Container(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 10,
+                        vertical: 4,
+                      ),
+                      decoration: BoxDecoration(
+                        color: product.isInStock
+                            ? AppColors.softGold.withValues(alpha: 0.9)
+                            : const Color(0xFFD95B5B),
+                        borderRadius: BorderRadius.circular(30),
+                        border: Border.all(
+                          color: AppColors.black.withValues(alpha: 0.12),
+                        ),
+                      ),
+                      child: Text(
+                        product.isInStock ? l10n.inStock : l10n.soldOut,
+                        style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                          color: product.isInStock
+                              ? AppColors.black
+                              : Colors.white,
+                          fontWeight: FontWeight.w800,
+                        ),
                       ),
                     ),
                   ),
@@ -75,6 +111,9 @@ class ProductCard extends StatelessWidget {
                             ? AppColors.gold.withValues(alpha: 0.9)
                             : AppColors.silver.withValues(alpha: 0.9),
                         borderRadius: BorderRadius.circular(30),
+                        border: Border.all(
+                          color: AppColors.black.withValues(alpha: 0.08),
+                        ),
                       ),
                       child: Text(
                         product.metalType,
@@ -94,7 +133,7 @@ class ProductCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   Text(
-                    product.name,
+                    localizedName,
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                     style: Theme.of(context).textTheme.titleMedium,
@@ -106,7 +145,7 @@ class ProductCard extends StatelessWidget {
                   ),
                   const SizedBox(height: 6),
                   Text(
-                    product.description,
+                    localizedDescription,
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
                     style: Theme.of(context).textTheme.bodySmall,
@@ -119,7 +158,9 @@ class ProductCard extends StatelessWidget {
                       style: ElevatedButton.styleFrom(
                         minimumSize: const Size.fromHeight(38),
                       ),
-                      child: const Text('Enquire Now'),
+                      child: Text(
+                        product.isInStock ? l10n.enquireNow : l10n.notifyMe,
+                      ),
                     ),
                   ),
                 ],

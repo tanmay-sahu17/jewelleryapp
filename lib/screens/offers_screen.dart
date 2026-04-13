@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:shri_jewellers/l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
 
 import '../models/offer_model.dart';
@@ -20,13 +21,14 @@ class OffersScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final AppLocalizations l10n = AppLocalizations.of(context)!;
     return PremiumBackground(
       child: Consumer<ShopProvider>(
         builder: (BuildContext context, ShopProvider provider, Widget? child) {
           if (provider.offers.isEmpty) {
-            return const EmptyState(
-              title: 'No active offers right now',
-              subtitle: 'Please check back soon for upcoming discounts.',
+            return EmptyState(
+              title: l10n.offersEmptyTitle,
+              subtitle: l10n.offersEmptySubtitle,
               icon: Icons.local_offer_outlined,
             );
           }
@@ -57,13 +59,14 @@ class _OfferListCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final AppLocalizations l10n = AppLocalizations.of(context)!;
     return Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(16),
         boxShadow: <BoxShadow>[
           BoxShadow(
-            color: Colors.black.withValues(alpha: 0.32),
-            blurRadius: 18,
+            color: AppColors.black.withValues(alpha: 0.13),
+            blurRadius: 16,
             offset: const Offset(0, 8),
           ),
         ],
@@ -82,6 +85,8 @@ class _OfferListCard extends StatelessWidget {
                   CachedNetworkImage(
                     imageUrl: offer.imageUrl,
                     fit: BoxFit.cover,
+                    memCacheWidth: 1100,
+                    maxWidthDiskCache: 1500,
                   ),
                   DecoratedBox(
                     decoration: BoxDecoration(
@@ -89,8 +94,8 @@ class _OfferListCard extends StatelessWidget {
                         begin: Alignment.bottomCenter,
                         end: Alignment.topCenter,
                         colors: <Color>[
-                          Colors.black.withValues(alpha: 0.75),
-                          gradient.last.withValues(alpha: 0.15),
+                          AppColors.maroon.withValues(alpha: 0.72),
+                          gradient.last.withValues(alpha: 0.2),
                           Colors.transparent,
                         ],
                       ),
@@ -105,12 +110,16 @@ class _OfferListCard extends StatelessWidget {
                       children: <Widget>[
                         Text(
                           offer.title,
-                          style: Theme.of(context).textTheme.titleLarge,
+                          style: Theme.of(
+                            context,
+                          ).textTheme.titleLarge?.copyWith(color: Colors.white),
                         ),
                         const SizedBox(height: 6),
                         Text(
                           offer.description,
-                          style: Theme.of(context).textTheme.bodyMedium,
+                          style: Theme.of(
+                            context,
+                          ).textTheme.bodyMedium?.copyWith(color: Colors.white),
                           maxLines: 2,
                           overflow: TextOverflow.ellipsis,
                         ),
@@ -122,7 +131,7 @@ class _OfferListCard extends StatelessWidget {
             ),
             Container(
               width: double.infinity,
-              color: AppColors.charcoal,
+              color: AppColors.charcoal.withValues(alpha: 0.98),
               padding: const EdgeInsets.fromLTRB(14, 12, 14, 12),
               child: Row(
                 children: <Widget>[
@@ -137,7 +146,7 @@ class _OfferListCard extends StatelessWidget {
                   ),
                   TextButton(
                     onPressed: () => _showOfferInfo(context),
-                    child: const Text('Know More'),
+                    child: Text(l10n.knowMore),
                   ),
                 ],
               ),
@@ -149,6 +158,7 @@ class _OfferListCard extends StatelessWidget {
   }
 
   void _showOfferInfo(BuildContext context) {
+    final AppLocalizations l10n = AppLocalizations.of(context)!;
     showModalBottomSheet<void>(
       context: context,
       backgroundColor: AppColors.charcoal,
@@ -181,7 +191,7 @@ class _OfferListCard extends StatelessWidget {
                 width: double.infinity,
                 child: ElevatedButton(
                   onPressed: () => Navigator.of(context).pop(),
-                  child: const Text('Close'),
+                  child: Text(l10n.close),
                 ),
               ),
             ],

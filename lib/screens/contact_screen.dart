@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shri_jewellers/l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
 
 import '../providers/shop_provider.dart';
@@ -14,6 +15,7 @@ class ContactScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final AppLocalizations l10n = AppLocalizations.of(context)!;
     return PremiumBackground(
       child: Consumer<ShopProvider>(
         builder: (BuildContext context, ShopProvider provider, Widget? child) {
@@ -23,7 +25,7 @@ class ContactScreen extends StatelessWidget {
             padding: const EdgeInsets.only(top: 10, bottom: 24),
             children: <Widget>[
               Text(
-                'Visit Our Showroom',
+                l10n.visitOurShowroom,
                 style: Theme.of(context).textTheme.titleLarge,
               ),
               const SizedBox(height: 12),
@@ -34,13 +36,13 @@ class ContactScreen extends StatelessWidget {
               ),
               const SizedBox(height: 12),
               _PhoneTile(
-                label: 'Primary',
+                label: l10n.primary,
                 phoneNumber: shop.primaryPhone,
                 onTap: () => LauncherUtils.call(context, shop.primaryPhone),
               ),
               const SizedBox(height: 8),
               _PhoneTile(
-                label: 'Secondary',
+                label: l10n.secondary,
                 phoneNumber: shop.secondaryPhone,
                 onTap: () => LauncherUtils.call(context, shop.secondaryPhone),
               ),
@@ -52,11 +54,10 @@ class ContactScreen extends StatelessWidget {
                       onPressed: () => LauncherUtils.whatsapp(
                         context,
                         phoneNumber: shop.whatsapp,
-                        message:
-                            'Hi Gulab Jewellers, I want to know more about your latest collection.',
+                        message: l10n.contactWhatsAppMessage,
                       ),
                       icon: const Icon(Icons.chat_bubble_outline_rounded),
-                      label: const Text('WhatsApp'),
+                      label: Text(l10n.whatsapp),
                     ),
                   ),
                   const SizedBox(width: 10),
@@ -64,14 +65,14 @@ class ContactScreen extends StatelessWidget {
                     child: OutlinedButton.icon(
                       onPressed: () => LauncherUtils.email(context, shop.email),
                       icon: const Icon(Icons.email_outlined),
-                      label: const Text('Email'),
+                      label: Text(l10n.email),
                     ),
                   ),
                 ],
               ),
               const SizedBox(height: 16),
               Text(
-                'Business Hours',
+                l10n.businessHours,
                 style: Theme.of(context).textTheme.titleLarge,
               ),
               const SizedBox(height: 10),
@@ -80,7 +81,7 @@ class ContactScreen extends StatelessWidget {
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(16),
                   color: AppColors.charcoal,
-                  border: Border.all(color: AppColors.gold.withValues(alpha: 0.2)),
+                  border: Border.all(color: AppColors.border),
                 ),
                 child: Table(
                   columnWidths: const <int, TableColumnWidth>{
@@ -93,14 +94,14 @@ class ContactScreen extends StatelessWidget {
                         Padding(
                           padding: const EdgeInsets.symmetric(vertical: 7),
                           child: Text(
-                            entry.key,
+                            _localizedWeekday(entry.key, l10n),
                             style: Theme.of(context).textTheme.bodyMedium,
                           ),
                         ),
                         Padding(
                           padding: const EdgeInsets.symmetric(vertical: 7),
                           child: Text(
-                            entry.value,
+                            _localizedHours(entry.value, l10n),
                             style: Theme.of(context).textTheme.bodySmall,
                           ),
                         ),
@@ -111,7 +112,7 @@ class ContactScreen extends StatelessWidget {
               ),
               const SizedBox(height: 16),
               Text(
-                'Find Us On Map',
+                l10n.findUsOnMap,
                 style: Theme.of(context).textTheme.titleLarge,
               ),
               const SizedBox(height: 10),
@@ -119,14 +120,14 @@ class ContactScreen extends StatelessWidget {
                 height: 180,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(16),
-                  border: Border.all(color: AppColors.gold.withValues(alpha: 0.22)),
+                  border: Border.all(color: AppColors.border),
                   gradient: const LinearGradient(
-                    colors: <Color>[Color(0xFF1D1812), Color(0xFF151515)],
+                    colors: <Color>[Color(0xFFFFF5E3), Color(0xFFF2E5CC)],
                     begin: Alignment.topLeft,
                     end: Alignment.bottomRight,
                   ),
                 ),
-                child: const Center(
+                child: Center(
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     children: <Widget>[
@@ -136,7 +137,7 @@ class ContactScreen extends StatelessWidget {
                         color: AppColors.softGold,
                       ),
                       SizedBox(height: 8),
-                      Text('Google Map Preview Placeholder'),
+                      Text(l10n.googleMapPlaceholder),
                     ],
                   ),
                 ),
@@ -157,7 +158,7 @@ class ContactScreen extends StatelessWidget {
                     }
                   },
                   icon: const Icon(Icons.account_balance_outlined),
-                  label: const Text('Payment Details'),
+                  label: Text(l10n.paymentDetails),
                 ),
               ),
             ],
@@ -165,6 +166,31 @@ class ContactScreen extends StatelessWidget {
         },
       ),
     );
+  }
+
+  String _localizedHours(String value, AppLocalizations l10n) {
+    return value.toLowerCase() == 'closed' ? l10n.closed : value;
+  }
+
+  String _localizedWeekday(String key, AppLocalizations l10n) {
+    switch (key.toLowerCase()) {
+      case 'monday':
+        return l10n.weekdayMonday;
+      case 'tuesday':
+        return l10n.weekdayTuesday;
+      case 'wednesday':
+        return l10n.weekdayWednesday;
+      case 'thursday':
+        return l10n.weekdayThursday;
+      case 'friday':
+        return l10n.weekdayFriday;
+      case 'saturday':
+        return l10n.weekdaySaturday;
+      case 'sunday':
+        return l10n.weekdaySunday;
+      default:
+        return key;
+    }
   }
 }
 
@@ -186,7 +212,7 @@ class _InfoCard extends StatelessWidget {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(16),
         color: AppColors.charcoal,
-        border: Border.all(color: AppColors.gold.withValues(alpha: 0.2)),
+        border: Border.all(color: AppColors.border),
       ),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -233,6 +259,7 @@ class _PhoneTile extends StatelessWidget {
     return Material(
       color: AppColors.charcoal,
       borderRadius: BorderRadius.circular(14),
+      shadowColor: AppColors.black.withValues(alpha: 0.05),
       child: InkWell(
         borderRadius: BorderRadius.circular(14),
         onTap: onTap,
@@ -240,7 +267,7 @@ class _PhoneTile extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
           child: Row(
             children: <Widget>[
-              const Icon(Icons.call, color: AppColors.softGold, size: 19),
+              Icon(Icons.call, color: AppColors.softGold, size: 19),
               const SizedBox(width: 10),
               Text(label, style: Theme.of(context).textTheme.titleMedium),
               const Spacer(),

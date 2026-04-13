@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:shri_jewellers/l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
 import 'package:share_plus/share_plus.dart';
 
@@ -16,7 +17,12 @@ class ProductDetailScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final AppLocalizations l10n = AppLocalizations.of(context)!;
     final ShopProvider provider = context.watch<ShopProvider>();
+    final String localizedName =
+      product.localizedNameForLanguage(provider.locale.languageCode);
+    final String localizedDescription =
+      product.localizedDescriptionForLanguage(provider.locale.languageCode);
     final double estimate = provider.estimatePrice(product);
     final double rate = _currentRate(provider);
 
@@ -27,16 +33,17 @@ class ProductDetailScreen extends StatelessWidget {
             expandedHeight: 330,
             pinned: true,
             stretch: true,
+            backgroundColor: AppColors.canvas.withValues(alpha: 0.92),
             title: Text(
-              product.name,
+              localizedName,
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
               style: Theme.of(context).textTheme.titleMedium,
             ),
             actions: <Widget>[
               IconButton(
-                tooltip: 'Share',
-                onPressed: () => _shareProduct(estimate),
+                tooltip: l10n.share,
+                onPressed: () => _shareProduct(estimate, localizedName, context),
                 icon: const Icon(Icons.share_outlined),
               ),
             ],
@@ -49,6 +56,8 @@ class ProductDetailScreen extends StatelessWidget {
                     child: CachedNetworkImage(
                       imageUrl: product.imageUrl,
                       fit: BoxFit.cover,
+                      memCacheWidth: 1400,
+                      maxWidthDiskCache: 1800,
                     ),
                   ),
                   DecoratedBox(
@@ -57,8 +66,8 @@ class ProductDetailScreen extends StatelessWidget {
                         begin: Alignment.bottomCenter,
                         end: Alignment.topCenter,
                         colors: <Color>[
-                          Colors.black.withValues(alpha: 0.75),
-                          Colors.black.withValues(alpha: 0.1),
+                          AppColors.maroon.withValues(alpha: 0.68),
+                          AppColors.maroon.withValues(alpha: 0.16),
                           Colors.transparent,
                         ],
                       ),
@@ -69,8 +78,10 @@ class ProductDetailScreen extends StatelessWidget {
             ),
           ),
           SliverToBoxAdapter(
-            child: Container(
-              decoration: const BoxDecoration(
+            child: AnimatedContainer(
+              duration: const Duration(milliseconds: 320),
+              curve: Curves.easeInOutCubic,
+              decoration: BoxDecoration(
                 gradient: AppColors.appBackground,
               ),
               child: Padding(
@@ -79,7 +90,7 @@ class ProductDetailScreen extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     Text(
-                      product.name,
+                      localizedName,
                       style: Theme.of(context).textTheme.headlineMedium,
                     ),
                     const SizedBox(height: 10),
@@ -94,12 +105,12 @@ class ProductDetailScreen extends StatelessWidget {
                     ),
                     const SizedBox(height: 18),
                     Text(
-                      'Design Description',
+                      l10n.designDescription,
                       style: Theme.of(context).textTheme.titleLarge,
                     ),
                     const SizedBox(height: 8),
                     Text(
-                      product.description,
+                      localizedDescription,
                       style: Theme.of(context).textTheme.bodyLarge,
                     ),
                     const SizedBox(height: 18),
@@ -110,21 +121,28 @@ class ProductDetailScreen extends StatelessWidget {
                         borderRadius: BorderRadius.circular(16),
                         color: AppColors.charcoal,
                         border: Border.all(
-                          color: AppColors.gold.withValues(alpha: 0.25),
+                          color: AppColors.gold.withValues(alpha: 0.3),
                         ),
+                        boxShadow: <BoxShadow>[
+                          BoxShadow(
+                            color: AppColors.black.withValues(alpha: 0.08),
+                            blurRadius: 12,
+                            offset: const Offset(0, 5),
+                          ),
+                        ],
                       ),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
                           Text(
-                            'Estimated Price',
+                            l10n.estimatedPrice,
                             style: Theme.of(context).textTheme.titleLarge,
                           ),
                           const SizedBox(height: 8),
                           Text(
                             formatRupee(estimate),
                             style: Theme.of(context).textTheme.headlineMedium
-                                ?.copyWith(color: AppColors.softGold),
+                              ?.copyWith(color: AppColors.cream),
                           ),
                           const SizedBox(height: 6),
                           Text(
@@ -133,9 +151,18 @@ class ProductDetailScreen extends StatelessWidget {
                           ),
                           const SizedBox(height: 2),
                           Text(
-                            _rateCaption(),
+                            _rateCaption(context),
                             style: Theme.of(context).textTheme.bodySmall
                                 ?.copyWith(color: AppColors.softGold),
+                          ),
+                          const SizedBox(height: 8),
+                          Text(
+                            l10n.priceEstimateDisclaimer,
+                            style: Theme.of(context).textTheme.bodySmall
+                                ?.copyWith(
+                                  color: AppColors.mutedText,
+                                  height: 1.35,
+                                ),
                           ),
                         ],
                       ),
@@ -150,7 +177,7 @@ class ProductDetailScreen extends StatelessWidget {
                               provider.shopInfo.primaryPhone,
                             ),
                             icon: const Icon(Icons.call_outlined),
-                            label: const Text('Call Us'),
+                            label: Text(l10n.callUs),
                           ),
                         ),
                         const SizedBox(width: 10),
@@ -159,11 +186,13 @@ class ProductDetailScreen extends StatelessWidget {
                             onPressed: () => LauncherUtils.whatsapp(
                               context,
                               phoneNumber: provider.shopInfo.whatsapp,
-                              message:
-                                  'Hi, I would like details for ${product.name} (${product.weightLabel}).',
+                              message: l10n.productDetailsWhatsAppMessage(
+                                localizedName,
+                                product.weightLabel,
+                              ),
                             ),
                             icon: const Icon(Icons.chat_bubble_outline_rounded),
-                            label: const Text('WhatsApp Enquiry'),
+                            label: Text(l10n.whatsappEnquiry),
                           ),
                         ),
                       ],
@@ -172,9 +201,10 @@ class ProductDetailScreen extends StatelessWidget {
                     SizedBox(
                       width: double.infinity,
                       child: OutlinedButton.icon(
-                        onPressed: () => _shareProduct(estimate),
+                        onPressed: () =>
+                            _shareProduct(estimate, localizedName, context),
                         icon: const Icon(Icons.ios_share_outlined),
-                        label: const Text('Share Product'),
+                        label: Text(l10n.shareProduct),
                       ),
                     ),
                   ],
@@ -199,22 +229,31 @@ class ProductDetailScreen extends StatelessWidget {
     return provider.liveRates['Gold22K'] ?? 68500;
   }
 
-  String _rateCaption() {
+  String _rateCaption(BuildContext context) {
+    final AppLocalizations l10n = AppLocalizations.of(context)!;
     if (product.metalType == 'Silver') {
-      return 'Based on today\'s Silver live rate (10g basis)';
+      return l10n.rateCaptionSilver;
     }
     if (product.purity.contains('24')) {
-      return 'Based on today\'s Gold 24K live rate (10g basis)';
+      return l10n.rateCaptionGold24;
     }
-    return 'Based on today\'s Gold 22K live rate (10g basis)';
+    return l10n.rateCaptionGold22;
   }
 
-  Future<void> _shareProduct(double estimatePrice) {
+  Future<void> _shareProduct(
+    double estimatePrice,
+    String localizedName,
+    BuildContext context,
+  ) {
+    final AppLocalizations l10n = AppLocalizations.of(context)!;
     return Share.share(
-      'Check out ${product.name} from Gulab Jewellers. '
-      'Weight: ${product.weightLabel}, Purity: ${product.purity}, '
-      'Estimated price: ${formatRupee(estimatePrice)}.',
-      subject: product.name,
+      l10n.shareProductText(
+        localizedName,
+        product.weightLabel,
+        product.purity,
+        formatRupee(estimatePrice),
+      ),
+      subject: localizedName,
     );
   }
 }
@@ -231,7 +270,7 @@ class _DetailBadge extends StatelessWidget {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(24),
         color: AppColors.charcoal,
-        border: Border.all(color: AppColors.gold.withValues(alpha: 0.3)),
+        border: Border.all(color: AppColors.border),
       ),
       child: Text(
         label,

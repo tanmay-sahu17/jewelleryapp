@@ -1,0 +1,275 @@
+{
+  "@@locale": "en",
+  "appTitle": "Gulab Jewellers",
+  "homeTab": "Home",
+  "productsTab": "Products",
+  "offersTab": "Offers",
+  "contactTab": "Contact",
+  "contactUs": "Contact Us",
+  "premiumGoldSilver": "Premium Gold & Silver",
+  "notifications": "Notifications",
+  "closeSearch": "Close search",
+  "searchProducts": "Search products",
+  "darkModeEnabled": "Dark mode enabled",
+  "lightModeEnabled": "Light mode enabled",
+  "darkMode": "Dark Mode",
+  "enabled": "Enabled",
+  "disabled": "Disabled",
+  "themeAppliesInstantly": "Theme applies instantly across all screens.",
+  "callShowroom": "Call Showroom",
+  "bankDetails": "Bank Details",
+  "aboutShop": "About Shop",
+  "language": "Language",
+  "english": "English",
+  "hindi": "Hindi",
+  "languageChangedToEnglish": "Language changed to English",
+  "languageChangedToHindi": "Language changed to Hindi",
+  "limitedTimeOffers": "Limited Time Offers",
+  "freshFestiveDeals": "Fresh festive deals updated daily",
+  "featuredCollection": "Featured Collection",
+  "handpickedPremiumDesigns": "Handpicked premium designs for you",
+  "noFeaturedProductsYet": "No featured products yet",
+  "newLuxuryPiecesSoon": "New luxury pieces will be added shortly.",
+  "homeWhatsAppMessage": "Namaste, I want to enquire about {name} ({weight}, {purity}).",
+  "@homeWhatsAppMessage": {
+    "placeholders": {
+      "name": {},
+      "weight": {},
+      "purity": {}
+    }
+  },
+  "shopOpenNow": "Shop Open Now",
+  "shopClosedNow": "Shop Closed Now",
+  "todayLabel": "Today",
+  "shopClosedToday": "Shop is closed today",
+  "checkBusinessHours": "Check business hours",
+  "closesAt": "Closes at {time}",
+  "@closesAt": {
+    "placeholders": {
+      "time": {}
+    }
+  },
+  "opensAt": "Opens at {time}",
+  "@opensAt": {
+    "placeholders": {
+      "time": {}
+    }
+  },
+  "opensTomorrowAt": "Opens tomorrow at {time}",
+  "@opensTomorrowAt": {
+    "placeholders": {
+      "time": {}
+    }
+  },
+  "closed": "Closed",
+  "productInquiryInStock": "Hello Gulab Jewellers, I want details for {name} ({weight}, {purity}).",
+  "@productInquiryInStock": {
+    "placeholders": {
+      "name": {},
+      "weight": {},
+      "purity": {}
+    }
+  },
+  "productInquiryNotify": "Hello Gulab Jewellers, please notify me when {name} ({weight}, {purity}) is available again.",
+  "@productInquiryNotify": {
+    "placeholders": {
+      "name": {},
+      "weight": {},
+      "purity": {}
+    }
+  },
+  "visitOurShowroom": "Visit Our Showroom",
+  "primary": "Primary",
+  "secondary": "Secondary",
+  "whatsapp": "WhatsApp",
+  "email": "Email",
+  "businessHours": "Business Hours",
+  "findUsOnMap": "Find Us On Map",
+  "googleMapPlaceholder": "Google Map Preview Placeholder",
+  "paymentDetails": "Payment Details",
+  "contactWhatsAppMessage": "Hi Gulab Jewellers, I want to know more about your latest collection.",
+  "aboutTitle": "About Shop",
+  "heritageOfTrust": "A Heritage of Trust",
+  "aboutDescription": "Gulab Jewellers brings together timeless craftsmanship and modern taste in premium gold and silver jewellery. Every design is curated for elegance, purity, and family trust.",
+  "certifiedPurity": "Certified Purity",
+  "certifiedPuritySubtitle": "We prioritize hallmarked jewellery and transparent pricing every day.",
+  "exclusiveDesigns": "Exclusive Designs",
+  "exclusiveDesignsSubtitle": "From bridal sets to daily wear, every collection is selected with finesse.",
+  "familyCentricService": "Family-Centric Service",
+  "familyCentricServiceSubtitle": "Warm guidance, honest recommendations, and personalized assistance.",
+  "advanceBookingOnly": "For advance booking or token amount only",
+  "bankName": "Bank Name",
+  "accountHolderName": "Account Holder Name",
+  "accountNumber": "Account Number",
+  "ifscCode": "IFSC Code",
+  "upiId": "UPI ID",
+  "qrCode": "QR Code",
+  "qrPlaceholder": "QR Placeholder",
+  "copiedToClipboard": "{label} copied to clipboard.",
+  "@copiedToClipboard": {
+    "placeholders": {
+      "label": {}
+    }
+  },
+  "offersEmptyTitle": "No active offers right now",
+  "offersEmptySubtitle": "Please check back soon for upcoming discounts.",
+  "knowMore": "Know More",
+  "close": "Close",
+  "notificationsMarkedRead": "{count} notifications marked as read.",
+  "@notificationsMarkedRead": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "markAll": "Mark all",
+  "notificationsEmptyTitle": "No notifications yet",
+  "notificationsEmptySubtitle": "Updates and offer alerts will appear here.",
+  "justNow": "Just now",
+  "minutesAgo": "{minutes}m ago",
+  "@minutesAgo": {
+    "placeholders": {
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
+  "hoursAgo": "{hours}h ago",
+  "@hoursAgo": {
+    "placeholders": {
+      "hours": {
+        "type": "int"
+      }
+    }
+  },
+  "yesterday": "Yesterday",
+  "daysAgo": "{days}d ago",
+  "@daysAgo": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  },
+  "designDescription": "Design Description",
+  "estimatedPrice": "Estimated Price",
+  "priceEstimateDisclaimer": "Please note: This amount is an indicative estimate based on current metal rates. Final in-store billing may vary after applicable making charges and GST.",
+  "callUs": "Call Us",
+  "whatsappEnquiry": "WhatsApp Enquiry",
+  "shareProduct": "Share Product",
+  "share": "Share",
+  "productDetailsWhatsAppMessage": "Hi, I would like details for {name} ({weight}).",
+  "@productDetailsWhatsAppMessage": {
+    "placeholders": {
+      "name": {},
+      "weight": {}
+    }
+  },
+  "rateCaptionSilver": "Based on today's Silver live rate (10g basis)",
+  "rateCaptionGold24": "Based on today's Gold 24K live rate (10g basis)",
+  "rateCaptionGold22": "Based on today's Gold 22K live rate (10g basis)",
+  "shareProductText": "Check out {name} from Gulab Jewellers. Weight: {weight}, Purity: {purity}, Estimated price: {price}.",
+  "@shareProductText": {
+    "placeholders": {
+      "name": {},
+      "weight": {},
+      "purity": {},
+      "price": {}
+    }
+  },
+  "inStock": "In Stock",
+  "soldOut": "Sold Out",
+  "enquireNow": "Enquire Now",
+  "notifyMe": "Notify Me",
+  "liveRateTickerText": "Gold 22K: {gold22}   |   Gold 24K: {gold24}   |   Silver: {silver}   |   Updated Live Rates (10g)",
+  "@liveRateTickerText": {
+    "placeholders": {
+      "gold22": {},
+      "gold24": {},
+      "silver": {}
+    }
+  },
+  "todaysShopRate": "Today's Shop Rate (10g)",
+  "bestValuePricing": "Best value pricing for in-store purchase (10g basis).",
+  "lastUpdatedUnknown": "Last updated: --",
+  "lastUpdatedAt": "Last updated: {time}",
+  "@lastUpdatedAt": {
+    "placeholders": {
+      "time": {}
+    }
+  },
+  "gold22k": "Gold 22K",
+  "gold24k": "Gold 24K",
+  "silver": "Silver",
+  "filters": "Filters",
+  "filtersWithCount": "Filters ({count})",
+  "@filtersWithCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "closeFilters": "Close filters",
+  "applyFiltersSortPref": "Apply filters and sorting preferences.",
+  "category": "Category",
+  "categoryAll": "All",
+  "categoryGold": "Gold",
+  "categorySilver": "Silver",
+  "categoryRings": "Rings",
+  "categoryNecklaces": "Necklaces",
+  "categoryBangles": "Bangles",
+  "categoryEarrings": "Earrings",
+  "metalType": "Metal Type",
+  "purity": "Purity",
+  "inStockOnly": "In Stock only",
+  "hideSoldOutProducts": "Hide sold out products",
+  "estimatedPriceRange": "Estimated Price Range",
+  "weightRange": "Weight Range",
+  "reset": "Reset",
+  "apply": "Apply",
+  "sortBy": "Sort By",
+  "closeSortOptions": "Close sort options",
+  "chooseSortArrangement": "Choose how products should be arranged.",
+  "sortLatest": "Latest",
+  "sortPriceLowToHigh": "Price: Low to High",
+  "sortPriceHighToLow": "Price: High to Low",
+  "sortPopular": "Popular",
+  "discoverCollection": "Discover Our Collection",
+  "browseHandcraftedDesigns": "Browse handcrafted gold and silver jewellery designs.",
+  "searchHint": "Search products, category, metal, purity...",
+  "clearSearch": "Clear search",
+  "searchPrefix": "Search",
+  "categoryPrefix": "Category",
+  "pricePrefix": "Price",
+  "weightPrefix": "Weight",
+  "clearAll": "Clear all",
+  "productsFound": "{count} products found",
+  "@productsFound": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "noItemsForFilters": "No items found for these filters",
+  "noMatchingProducts": "No matching products found",
+  "tryLooseningFilters": "Try loosening filters, changing category, or adjusting price and weight ranges.",
+  "tryDifferentCategory": "Try a different category to explore more designs.",
+  "showAllCategories": "Show all categories",
+  "includeSoldOut": "Include sold out",
+  "clearMetalPurity": "Clear metal and purity",
+  "resetRanges": "Reset ranges",
+  "resetAllCriteria": "Reset all criteria",
+  "loadingMoreProducts": "Loading more products...",
+  "loadMoreProducts": "Load more products",
+  "splashTagline": "Timeless Gold & Silver Elegance",
+  "weekdayMonday": "Monday",
+  "weekdayTuesday": "Tuesday",
+  "weekdayWednesday": "Wednesday",
+  "weekdayThursday": "Thursday",
+  "weekdayFriday": "Friday",
+  "weekdaySaturday": "Saturday",
+  "weekdaySunday": "Sunday"
+}

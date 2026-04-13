@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shri_jewellers/l10n/app_localizations.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 
@@ -11,8 +12,9 @@ class BankDetailsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final AppLocalizations l10n = AppLocalizations.of(context)!;
     return Scaffold(
-      appBar: AppBar(title: const Text('Payment Details')),
+      appBar: AppBar(title: Text(l10n.paymentDetails)),
       body: PremiumBackground(
         child: Consumer<ShopProvider>(
           builder:
@@ -22,49 +24,49 @@ class BankDetailsScreen extends StatelessWidget {
                   padding: const EdgeInsets.only(top: 12, bottom: 24),
                   children: <Widget>[
                     Text(
-                      'For advance booking or token amount only',
+                      l10n.advanceBookingOnly,
                       style: Theme.of(context).textTheme.titleMedium?.copyWith(
                         color: AppColors.softGold,
                       ),
                     ),
                     const SizedBox(height: 12),
                     _CopyableInfoCard(
-                      title: 'Bank Name',
+                      title: l10n.bankName,
                       value: bank.bankName,
-                      onCopy: () => _copy(context, 'Bank Name', bank.bankName),
+                      onCopy: () => _copy(context, l10n.bankName, bank.bankName),
                     ),
                     const SizedBox(height: 10),
                     _CopyableInfoCard(
-                      title: 'Account Holder Name',
+                      title: l10n.accountHolderName,
                       value: bank.accountHolder,
                       onCopy: () => _copy(
                         context,
-                        'Account Holder Name',
+                        l10n.accountHolderName,
                         bank.accountHolder,
                       ),
                     ),
                     const SizedBox(height: 10),
                     _CopyableInfoCard(
-                      title: 'Account Number',
+                      title: l10n.accountNumber,
                       value: bank.accountNumber,
                       onCopy: () =>
-                          _copy(context, 'Account Number', bank.accountNumber),
+                          _copy(context, l10n.accountNumber, bank.accountNumber),
                     ),
                     const SizedBox(height: 10),
                     _CopyableInfoCard(
-                      title: 'IFSC Code',
+                      title: l10n.ifscCode,
                       value: bank.ifscCode,
-                      onCopy: () => _copy(context, 'IFSC Code', bank.ifscCode),
+                      onCopy: () => _copy(context, l10n.ifscCode, bank.ifscCode),
                     ),
                     const SizedBox(height: 10),
                     _CopyableInfoCard(
-                      title: 'UPI ID',
+                      title: l10n.upiId,
                       value: bank.upiId,
-                      onCopy: () => _copy(context, 'UPI ID', bank.upiId),
+                      onCopy: () => _copy(context, l10n.upiId, bank.upiId),
                     ),
                     const SizedBox(height: 18),
                     Text(
-                      'QR Code',
+                      l10n.qrCode,
                       style: Theme.of(context).textTheme.titleLarge,
                     ),
                     const SizedBox(height: 10),
@@ -74,7 +76,7 @@ class BankDetailsScreen extends StatelessWidget {
                         color: AppColors.charcoal,
                         borderRadius: BorderRadius.circular(16),
                         border: Border.all(
-                          color: AppColors.gold.withValues(alpha: 0.3),
+                          color: AppColors.border,
                         ),
                       ),
                       child: Center(
@@ -86,7 +88,7 @@ class BankDetailsScreen extends StatelessWidget {
                             borderRadius: BorderRadius.circular(14),
                             border: Border.all(color: AppColors.silver),
                           ),
-                          child: const Column(
+                          child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: <Widget>[
                               Icon(
@@ -96,7 +98,7 @@ class BankDetailsScreen extends StatelessWidget {
                               ),
                               SizedBox(height: 8),
                               Text(
-                                'QR Placeholder',
+                                l10n.qrPlaceholder,
                                 style: TextStyle(
                                   color: AppColors.black,
                                   fontWeight: FontWeight.w700,
@@ -118,9 +120,12 @@ class BankDetailsScreen extends StatelessWidget {
   Future<void> _copy(BuildContext context, String label, String value) async {
     await Clipboard.setData(ClipboardData(text: value));
     if (context.mounted) {
+      final AppLocalizations l10n = AppLocalizations.of(context)!;
       ScaffoldMessenger.of(
         context,
-      ).showSnackBar(SnackBar(content: Text('$label copied to clipboard.')));
+      ).showSnackBar(
+        SnackBar(content: Text(l10n.copiedToClipboard(label))),
+      );
     }
   }
 }
@@ -148,7 +153,7 @@ class _CopyableInfoCard extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 14),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(16),
-            border: Border.all(color: AppColors.gold.withValues(alpha: 0.22)),
+            border: Border.all(color: AppColors.border),
           ),
           child: Row(
             children: <Widget>[
@@ -163,7 +168,7 @@ class _CopyableInfoCard extends StatelessWidget {
                 ),
               ),
               const SizedBox(width: 8),
-              const Icon(Icons.copy_rounded, color: AppColors.softGold),
+              Icon(Icons.copy_rounded, color: AppColors.softGold),
             ],
           ),
         ),
