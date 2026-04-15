@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:shri_jewellers/l10n/app_localizations.dart';
@@ -1198,6 +1199,8 @@ class _ProductsScreenState extends State<ProductsScreen> {
                           child: ProductCard(
                             product: product,
                             onTap: () => _openDetails(context, product),
+                            onQuickLook: () =>
+                                _openQuickLook(context, provider, product),
                             onEnquire: () =>
                                 _enquireNow(context, provider, product),
                           ),
@@ -1258,6 +1261,165 @@ class _ProductsScreenState extends State<ProductsScreen> {
     );
   }
 
+  Future<void> _openQuickLook(
+    BuildContext context,
+    ShopProvider provider,
+    Product product,
+  ) {
+    final AppLocalizations l10n = AppLocalizations.of(context)!;
+    final String localizedName =
+        product.localizedNameForLanguage(provider.locale.languageCode);
+    final String localizedDescription =
+        product.localizedDescriptionForLanguage(provider.locale.languageCode);
+    final double estimate = provider.estimatePrice(product);
+
+    return showModalBottomSheet<void>(
+      context: context,
+      showDragHandle: true,
+      useSafeArea: true,
+      isScrollControlled: true,
+      backgroundColor: AppColors.charcoal,
+      builder: (BuildContext sheetContext) {
+        return FractionallySizedBox(
+          heightFactor: 0.78,
+          child: Padding(
+            padding: const EdgeInsets.fromLTRB(16, 8, 16, 16),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Text(
+                  l10n.quickLook,
+                  style: Theme.of(sheetContext).textTheme.titleLarge,
+                ),
+                const SizedBox(height: 10),
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(14),
+                  child: AspectRatio(
+                    aspectRatio: 16 / 10,
+                    child: CachedNetworkImage(
+                      imageUrl: product.imageUrl,
+                      fit: BoxFit.cover,
+                      memCacheWidth: 1100,
+                      maxWidthDiskCache: 1500,
+                      placeholder: (BuildContext context, String _) => Container(
+                        color: AppColors.silver.withValues(alpha: 0.2),
+                        child: Center(
+                          child: CircularProgressIndicator(
+                            strokeWidth: 2,
+                            color: AppColors.gold,
+                          ),
+                        ),
+                      ),
+                      errorWidget: (BuildContext context, String _, Object __) {
+                        return Container(
+                          color: AppColors.silver.withValues(alpha: 0.2),
+                          child: Icon(
+                            Icons.image_not_supported_outlined,
+                            color: AppColors.softGold,
+                            size: 30,
+                          ),
+                        );
+                      },
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 12),
+                Text(
+                  localizedName,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                  style: Theme.of(sheetContext).textTheme.titleMedium?.copyWith(
+                    fontWeight: FontWeight.w800,
+                  ),
+                ),
+                const SizedBox(height: 8),
+                Wrap(
+                  spacing: 8,
+                  runSpacing: 8,
+                  children: <Widget>[
+                    _QuickLookBadge(label: product.metalType),
+                    _QuickLookBadge(label: product.purity),
+                    _QuickLookBadge(label: formatWeight(product.weight)),
+                  ],
+                ),
+                const SizedBox(height: 10),
+                Text(
+                  localizedDescription,
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
+                  style: Theme.of(sheetContext).textTheme.bodySmall,
+                ),
+                const SizedBox(height: 12),
+                Container(
+                  width: double.infinity,
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 12,
+                    vertical: 10,
+                  ),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(12),
+                    color: AppColors.gold.withValues(alpha: 0.12),
+                    border: Border.all(
+                      color: AppColors.gold.withValues(alpha: 0.35),
+                    ),
+                  ),
+                  child: Row(
+                    children: <Widget>[
+                      Expanded(
+                        child: Text(
+                          l10n.estimatedPrice,
+                          style: Theme.of(sheetContext).textTheme.bodySmall,
+                        ),
+                      ),
+                      Text(
+                        formatRupee(estimate),
+                        style: Theme.of(sheetContext).textTheme.titleMedium
+                            ?.copyWith(
+                              color: AppColors.cream,
+                              fontWeight: FontWeight.w800,
+                            ),
+                      ),
+                    ],
+                  ),
+                ),
+                const Spacer(),
+                Row(
+                  children: <Widget>[
+                    Expanded(
+                      child: OutlinedButton.icon(
+                        onPressed: () {
+                          Navigator.of(sheetContext).pop();
+                          _openDetails(context, product);
+                        },
+                        icon: const Icon(Icons.open_in_full_rounded, size: 16),
+                        label: Text(l10n.viewDetails),
+                      ),
+                    ),
+                    const SizedBox(width: 10),
+                    Expanded(
+                      child: ElevatedButton.icon(
+                        onPressed: () {
+                          Navigator.of(sheetContext).pop();
+                          _enquireNow(context, provider, product);
+                        },
+                        icon: const Icon(Icons.chat_bubble_outline_rounded, size: 16),
+                        label: Text(
+                          product.isInStock ? l10n.enquireNow : l10n.notifyMe,
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+        );
+      },
+    );
+  }
+
   Future<void> _enquireNow(
     BuildContext context,
     ShopProvider provider,
@@ -1282,6 +1444,31 @@ class _ProductsScreenState extends State<ProductsScreen> {
       context,
       phoneNumber: provider.shopInfo.whatsapp,
       message: message,
+    );
+  }
+}
+
+class _QuickLookBadge extends StatelessWidget {
+  const _QuickLookBadge({required this.label});
+
+  final String label;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(20),
+        color: AppColors.charcoal,
+        border: Border.all(color: AppColors.border),
+      ),
+      child: Text(
+        label,
+        style: Theme.of(context).textTheme.bodySmall?.copyWith(
+          fontWeight: FontWeight.w700,
+          color: AppColors.softGold,
+        ),
+      ),
     );
   }
 }

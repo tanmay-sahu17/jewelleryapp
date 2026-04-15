@@ -18,7 +18,7 @@ import 'app_localizations_hi.dart';
 /// `supportedLocales` list. For example:
 ///
 /// ```dart
-/// import 'package:shri_jewellers/l10n/app_localizations.dart';
+/// import 'l10n/app_localizations.dart';
 ///
 /// return MaterialApp(
 ///   localizationsDelegates: AppLocalizations.localizationsDelegates,
@@ -196,6 +196,96 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Call Showroom'**
   String get callShowroom;
+
+  /// No description provided for @priceCalculator.
+  ///
+  /// In en, this message translates to:
+  /// **'Price Calculator'**
+  String get priceCalculator;
+
+  /// No description provided for @priceCalculatorSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Calculate estimated price using today\'s shop rate.'**
+  String get priceCalculatorSubtitle;
+
+  /// No description provided for @calculatorMetal.
+  ///
+  /// In en, this message translates to:
+  /// **'Metal'**
+  String get calculatorMetal;
+
+  /// No description provided for @calculatorWeight.
+  ///
+  /// In en, this message translates to:
+  /// **'Weight (grams)'**
+  String get calculatorWeight;
+
+  /// No description provided for @calculatorWeightHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter weight in grams'**
+  String get calculatorWeightHint;
+
+  /// No description provided for @calculatorMakingPercent.
+  ///
+  /// In en, this message translates to:
+  /// **'Making Percentage'**
+  String get calculatorMakingPercent;
+
+  /// No description provided for @calculatorMakingHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter making %'**
+  String get calculatorMakingHint;
+
+  /// No description provided for @calculatorCalculate.
+  ///
+  /// In en, this message translates to:
+  /// **'Calculate Estimate'**
+  String get calculatorCalculate;
+
+  /// No description provided for @calculatorInvalidWeight.
+  ///
+  /// In en, this message translates to:
+  /// **'Please enter a valid weight greater than 0.'**
+  String get calculatorInvalidWeight;
+
+  /// No description provided for @calculatorInvalidMaking.
+  ///
+  /// In en, this message translates to:
+  /// **'Please enter a valid making percentage (0 or more).'**
+  String get calculatorInvalidMaking;
+
+  /// No description provided for @calculatorRatePer10g.
+  ///
+  /// In en, this message translates to:
+  /// **'Shop Rate (10g)'**
+  String get calculatorRatePer10g;
+
+  /// No description provided for @calculatorMetalValue.
+  ///
+  /// In en, this message translates to:
+  /// **'Metal Value'**
+  String get calculatorMetalValue;
+
+  /// No description provided for @calculatorMakingCharges.
+  ///
+  /// In en, this message translates to:
+  /// **'Making Charges'**
+  String get calculatorMakingCharges;
+
+  /// No description provided for @calculatorEstimatedTotal.
+  ///
+  /// In en, this message translates to:
+  /// **'Estimated Total'**
+  String get calculatorEstimatedTotal;
+
+  /// No description provided for @calculatorFormulaNote.
+  ///
+  /// In en, this message translates to:
+  /// **'Formula: (Rate ÷ 10 × Weight) + Making Charges'**
+  String get calculatorFormulaNote;
 
   /// No description provided for @bankDetails.
   ///
@@ -676,6 +766,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Sold Out'**
   String get soldOut;
+
+  /// No description provided for @quickLook.
+  ///
+  /// In en, this message translates to:
+  /// **'Quick Look'**
+  String get quickLook;
+
+  /// No description provided for @viewDetails.
+  ///
+  /// In en, this message translates to:
+  /// **'View Details'**
+  String get viewDetails;
 
   /// No description provided for @enquireNow.
   ///

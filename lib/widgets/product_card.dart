@@ -12,11 +12,13 @@ class ProductCard extends StatelessWidget {
     required this.product,
     required this.onTap,
     required this.onEnquire,
+    this.onQuickLook,
   });
 
   final Product product;
   final VoidCallback onTap;
   final VoidCallback onEnquire;
+  final VoidCallback? onQuickLook;
 
   @override
   Widget build(BuildContext context) {
@@ -151,18 +153,64 @@ class ProductCard extends StatelessWidget {
                     style: Theme.of(context).textTheme.bodySmall,
                   ),
                   const SizedBox(height: 10),
-                  SizedBox(
-                    width: double.infinity,
-                    child: ElevatedButton(
-                      onPressed: onEnquire,
-                      style: ElevatedButton.styleFrom(
-                        minimumSize: const Size.fromHeight(38),
-                      ),
-                      child: Text(
-                        product.isInStock ? l10n.enquireNow : l10n.notifyMe,
+                  if (onQuickLook != null)
+                    Row(
+                      children: <Widget>[
+                        Tooltip(
+                          message: l10n.quickLook,
+                          child: SizedBox(
+                            width: 44,
+                            height: 38,
+                            child: OutlinedButton(
+                              onPressed: onQuickLook,
+                              style: OutlinedButton.styleFrom(
+                                minimumSize: const Size(44, 38),
+                                padding: EdgeInsets.zero,
+                                tapTargetSize:
+                                    MaterialTapTargetSize.shrinkWrap,
+                              ),
+                              child: const Icon(
+                                Icons.visibility_outlined,
+                                size: 18,
+                              ),
+                            ),
+                          ),
+                        ),
+                        const SizedBox(width: 8),
+                        Expanded(
+                          child: ElevatedButton(
+                            onPressed: onEnquire,
+                            style: ElevatedButton.styleFrom(
+                              minimumSize: const Size.fromHeight(38),
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 8,
+                                vertical: 10,
+                              ),
+                            ),
+                            child: Text(
+                              product.isInStock
+                                  ? l10n.enquireNow
+                                  : l10n.notifyMe,
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                          ),
+                        ),
+                      ],
+                    )
+                  else
+                    SizedBox(
+                      width: double.infinity,
+                      child: ElevatedButton(
+                        onPressed: onEnquire,
+                        style: ElevatedButton.styleFrom(
+                          minimumSize: const Size.fromHeight(38),
+                        ),
+                        child: Text(
+                          product.isInStock ? l10n.enquireNow : l10n.notifyMe,
+                        ),
                       ),
                     ),
-                  ),
                 ],
               ),
             ),

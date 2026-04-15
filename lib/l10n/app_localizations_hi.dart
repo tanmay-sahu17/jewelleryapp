@@ -60,6 +60,51 @@ class AppLocalizationsHi extends AppLocalizations {
   String get callShowroom => 'शोरूम कॉल करें';
 
   @override
+  String get priceCalculator => 'प्राइस कैलकुलेटर';
+
+  @override
+  String get priceCalculatorSubtitle => 'आज के दुकान रेट से अनुमानित कीमत निकालें।';
+
+  @override
+  String get calculatorMetal => 'मेटल';
+
+  @override
+  String get calculatorWeight => 'वजन (ग्राम)';
+
+  @override
+  String get calculatorWeightHint => 'ग्राम में वजन दर्ज करें';
+
+  @override
+  String get calculatorMakingPercent => 'मेकिंग प्रतिशत';
+
+  @override
+  String get calculatorMakingHint => 'मेकिंग % दर्ज करें';
+
+  @override
+  String get calculatorCalculate => 'अनुमान निकालें';
+
+  @override
+  String get calculatorInvalidWeight => 'कृपया 0 से अधिक सही वजन दर्ज करें।';
+
+  @override
+  String get calculatorInvalidMaking => 'कृपया सही मेकिंग प्रतिशत दर्ज करें (0 या अधिक)।';
+
+  @override
+  String get calculatorRatePer10g => 'दुकान रेट (10 ग्राम)';
+
+  @override
+  String get calculatorMetalValue => 'मेटल वैल्यू';
+
+  @override
+  String get calculatorMakingCharges => 'मेकिंग चार्ज';
+
+  @override
+  String get calculatorEstimatedTotal => 'अनुमानित कुल';
+
+  @override
+  String get calculatorFormulaNote => 'फॉर्मूला: (रेट ÷ 10 × वजन) + मेकिंग चार्ज';
+
+  @override
   String get bankDetails => 'बैंक विवरण';
 
   @override
@@ -324,6 +369,12 @@ class AppLocalizationsHi extends AppLocalizations {
 
   @override
   String get soldOut => 'स्टॉक खत्म';
+
+  @override
+  String get quickLook => 'क्विक लुक';
+
+  @override
+  String get viewDetails => 'पूरी जानकारी';
 
   @override
   String get enquireNow => 'अभी पूछताछ करें';

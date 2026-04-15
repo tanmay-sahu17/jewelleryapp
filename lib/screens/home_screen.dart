@@ -19,6 +19,7 @@ import 'bank_details_screen.dart';
 import 'contact_screen.dart';
 import 'notifications_screen.dart';
 import 'offers_screen.dart';
+import 'price_calculator_screen.dart';
 import 'product_detail_screen.dart';
 import 'products_screen.dart';
 
@@ -57,6 +58,14 @@ class _HomeScreenState extends State<HomeScreen> {
     Navigator.of(
       context,
     ).push(MaterialPageRoute<void>(builder: (_) => const AboutScreen()));
+  }
+
+  void _openPriceCalculator() {
+    Navigator.of(context).push(
+      MaterialPageRoute<void>(
+        builder: (_) => const PriceCalculatorScreen(),
+      ),
+    );
   }
 
   void _handleThemeToggle(bool value) {
@@ -138,6 +147,31 @@ class _HomeScreenState extends State<HomeScreen> {
           child: tabs[_currentIndex],
         ),
       ),
+      floatingActionButton: _currentIndex == 0
+          ? Padding(
+              padding: const EdgeInsets.only(bottom: 8),
+              child: FloatingActionButton(
+                tooltip: l10n.priceCalculator,
+                onPressed: () {
+                  HapticFeedback.lightImpact();
+                  _openPriceCalculator();
+                },
+                backgroundColor: AppColors.gold,
+                foregroundColor: Theme.of(context).brightness == Brightness.dark
+                    ? AppColors.black
+                    : Colors.white,
+                elevation: 8,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(16),
+                  side: BorderSide(
+                    color: AppColors.gold.withValues(alpha: 0.82),
+                  ),
+                ),
+                child: const Icon(Icons.calculate_outlined, size: 28),
+              ),
+            )
+          : null,
+      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
       bottomNavigationBar: Container(
         decoration: BoxDecoration(
           color: AppColors.charcoal,
@@ -194,6 +228,7 @@ class _HomeScreenState extends State<HomeScreen> {
   PreferredSizeWidget _buildAppBar(BuildContext context) {
     final AppLocalizations l10n = AppLocalizations.of(context)!;
     if (_currentIndex == 0) {
+      final bool isDarkMode = Theme.of(context).brightness == Brightness.dark;
       final String shopName = context.read<ShopProvider>().shopInfo.name;
       final int unreadCount = context.select<ShopProvider, int>(
         (ShopProvider provider) => provider.unreadNotificationCount,
@@ -266,7 +301,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       child: Text(
                         unreadCount > 9 ? '9+' : '$unreadCount',
                         style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                          color: AppColors.black,
+                          color: isDarkMode ? AppColors.black : Colors.white,
                           fontWeight: FontWeight.w800,
                           fontSize: 10,
                         ),
@@ -419,6 +454,14 @@ class _HomeScreenState extends State<HomeScreen> {
                       onTap: () {
                         Navigator.of(context).pop();
                         _openBankDetails();
+                      },
+                    ),
+                    _DrawerTile(
+                      icon: Icons.calculate_outlined,
+                      label: l10n.priceCalculator,
+                      onTap: () {
+                        Navigator.of(context).pop();
+                        _openPriceCalculator();
                       },
                     ),
                     _DrawerTile(
@@ -737,15 +780,15 @@ class _ShopStatusBanner extends StatelessWidget {
   Widget build(BuildContext context) {
     final AppLocalizations l10n = AppLocalizations.of(context)!;
     final Color statusColor = status.isOpen
-        ? const Color(0xFF2ECC71)
-        : const Color(0xFFE74C3C);
+        ? const Color(0xFF1E8E4A)
+        : const Color(0xFFB83A2E);
 
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(14),
         color: AppColors.charcoal.withValues(alpha: 0.97),
-        border: Border.all(color: statusColor.withValues(alpha: 0.35)),
+        border: Border.all(color: AppColors.border.withValues(alpha: 0.85)),
       ),
       child: Row(
         children: <Widget>[

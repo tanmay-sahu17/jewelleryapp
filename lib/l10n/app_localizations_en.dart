@@ -60,6 +60,51 @@ class AppLocalizationsEn extends AppLocalizations {
   String get callShowroom => 'Call Showroom';
 
   @override
+  String get priceCalculator => 'Price Calculator';
+
+  @override
+  String get priceCalculatorSubtitle => 'Calculate estimated price using today\'s shop rate.';
+
+  @override
+  String get calculatorMetal => 'Metal';
+
+  @override
+  String get calculatorWeight => 'Weight (grams)';
+
+  @override
+  String get calculatorWeightHint => 'Enter weight in grams';
+
+  @override
+  String get calculatorMakingPercent => 'Making Percentage';
+
+  @override
+  String get calculatorMakingHint => 'Enter making %';
+
+  @override
+  String get calculatorCalculate => 'Calculate Estimate';
+
+  @override
+  String get calculatorInvalidWeight => 'Please enter a valid weight greater than 0.';
+
+  @override
+  String get calculatorInvalidMaking => 'Please enter a valid making percentage (0 or more).';
+
+  @override
+  String get calculatorRatePer10g => 'Shop Rate (10g)';
+
+  @override
+  String get calculatorMetalValue => 'Metal Value';
+
+  @override
+  String get calculatorMakingCharges => 'Making Charges';
+
+  @override
+  String get calculatorEstimatedTotal => 'Estimated Total';
+
+  @override
+  String get calculatorFormulaNote => 'Formula: (Rate ÷ 10 × Weight) + Making Charges';
+
+  @override
   String get bankDetails => 'Bank Details';
 
   @override
@@ -324,6 +369,12 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get soldOut => 'Sold Out';
+
+  @override
+  String get quickLook => 'Quick Look';
+
+  @override
+  String get viewDetails => 'View Details';
 
   @override
   String get enquireNow => 'Enquire Now';
